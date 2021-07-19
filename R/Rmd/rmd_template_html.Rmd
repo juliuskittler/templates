@@ -1,0 +1,46 @@
+---
+title: "Template"
+date: July 19, 2021
+output: 
+  html_document:
+    highlight: textmate
+    toc: true
+    toc_float: true
+    toc_depth: 2
+    number_sections: true
+
+---
+
+***
+
+The purpose of this document is ...
+
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = FALSE, eval=TRUE, warning = FALSE, message = FALSE, 
+                      cache.path = "cache/", fig.path = "cache/", cache = TRUE,
+                      fig.width = 8, fig.height = 8)
+
+
+library(dplyr)
+library(ggplot2)
+library(readr)
+library(tidyverse)
+
+set.seed(12345)
+options(scipen=999)
+
+```
+
+# Section
+
+## Subsection
+
+
+# Code
+
+```{r ref.label=knitr::all_labels(), echo=TRUE, eval=FALSE} 
+
+```
+
