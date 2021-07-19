@@ -1,0 +1,75 @@
+---
+title: "Dplyr"
+output: 
+  html_document:
+    highlight: textmate
+    toc: true
+    toc_float: true
+    toc_depth: 2
+    number_sections: true
+
+---
+
+***
+
+The purpose of this document is ...
+
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = FALSE, eval=TRUE, warning = FALSE, message = FALSE, 
+                      cache.path = "cache/", fig.path = "cache/", cache = TRUE,
+                      fig.width = 8, fig.height = 8)
+
+
+library(dplyr)
+library(ggplot2)
+library(readr)
+library(tidyverse)
+
+set.seed(12345)
+options(scipen=999)
+
+```
+
+# Summarize
+
+```{r}
+
+# Summarize all numeric variables with mean and median
+iris %>% 
+  group_by(Species) %>%
+  summarise_if(is.numeric, list(mean = mean, median = median))
+
+```
+
+```{r}
+
+# Summarize selected variables with mean and median
+iris %>% 
+  group_by(Species) %>%
+  summarise_at(c("Sepal.Length", "Sepal.Width"), list(mean = mean, median = median))
+
+```
+
+```{r}
+
+# Use non-variable functions e.g. n() and summarize selected variables with selected functions
+iris %>% 
+  group_by(Species) %>%
+  summarise(n = n(),
+            Sepal.Length_mean = mean(Sepal.Length), 
+            Sepal.Width_median = median(Sepal.Width))
+
+```
+
+
+## Subsection
+
+
+# Code
+
+```{r ref.label=knitr::all_labels(), echo=TRUE, eval=FALSE} 
+
+```
+
